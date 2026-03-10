@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SEO Audit Report — UrbanNest | Dec 2025</title>
+  <meta name="description" content="Comprehensive SEO audit for UrbanNest covering technical issues, on-page analysis, mobile usability, content gaps, and a prioritized action plan." />
+  <meta name="robots" content="noindex" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <style>
+    /* Print-specific overrides for audit page */
+    @media print {
+      .audit-hero { background: #0f172a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .back-link, .no-print { display: none !important; }
+    }
+  </style>
+</head>
+<body class="audit-page">
+
+  <!-- ── Audit hero header ──────────────────────────────── -->
+  <header class="audit-hero" role="banner">
+    <div class="audit-hero-inner">
+      <div class="audit-meta">
+        <span>Client: UrbanNest (urbannest.com)</span>
+        <span>·</span>
+        <span>Audit Date: December 31, 2025</span>
+        <span>·</span>
+        <span>Auditor: SEO Team</span>
+        <span>·</span>
+        <span>Tool: Internal + Simulated GSC/PageSpeed</span>
+      </div>
+
+      <h1>SEO Audit Report</h1>
+      <p>A full technical and content SEO audit covering crawlability, on-page optimization, Core Web Vitals, mobile usability, and keyword opportunities for Q1 2026 planning.</p>
+
+      <div class="audit-score-row">
+        <div class="audit-score-card">
+          <div class="audit-score-num" style="color:#f59e0b">62</div>
+          <div class="audit-score-label">Overall Health</div>
+        </div>
+        <div class="audit-score-card">
+          <div class="audit-score-num" style="color:#dc2626">4</div>
+          <div class="audit-score-label">Critical Issues</div>
+        </div>
+        <div class="audit-score-card">
+          <div class="audit-score-num" style="color:#d97706">8</div>
+          <div class="audit-score-label">Warnings</div>
+        </div>
+        <div class="audit-score-card">
+          <div class="audit-score-num" style="color:#0891b2">5</div>
+          <div class="audit-score-label">Notices</div>
+        </div>
+        <div class="audit-score-card">
+          <div class="audit-score-num" style="color:#16a34a">4</div>
+          <div class="audit-score-label">Opportunities</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Audit body ─────────────────────────────────────── -->
+  <div class="audit-body">
+
+    <a href="index.html" class="back-link" aria-label="Return to dashboard">← Back to Dashboard</a>
+
+    <!-- Executive Summary -->
+    <section class="audit-section" aria-labelledby="exec-summary-heading">
+      <h2 id="exec-summary-heading">📌 Executive Summary</h2>
+      <p class="section-intro">
+        UrbanNest's organic channel is growing (+15% sessions YoY) but is leaving significant revenue on the table due to declining click-through rates, poor mobile Core Web Vitals, and a complete absence of structured data on product pages.
+        The most urgent risk is mobile performance: a 5.8-second LCP will trigger Google's Page Experience demotion for mobile searchers, who represent 39% of UrbanNest's total audience.
+        Fixing the top 5 issues in this report is estimated to deliver an additional 1,200–1,800 organic sessions per month and 60–90 incremental conversions.
+      </p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:0.75rem;margin-top:0.75rem">
+        <div style="background:var(--danger-light);border-radius:var(--radius);padding:0.75rem">
+          <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;color:var(--danger);margin-bottom:0.3rem">Critical gap</div>
+          <div style="font-size:0.84rem;font-weight:600;color:var(--text)">Mobile LCP: 5.8s</div>
+          <div style="font-size:0.74rem;color:var(--muted)">Target: &lt; 2.5s</div>
+        </div>
+        <div style="background:var(--danger-light);border-radius:var(--radius);padding:0.75rem">
+          <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;color:var(--danger);margin-bottom:0.3rem">Revenue risk</div>
+          <div style="font-size:0.84rem;font-weight:600;color:var(--text)">No Product Schema</div>
+          <div style="font-size:0.74rem;color:var(--muted)">–25% estimated CTR vs competitors</div>
+        </div>
+        <div style="background:var(--warning-light);border-radius:var(--radius);padding:0.75rem">
+          <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;color:var(--warning);margin-bottom:0.3rem">Declining signal</div>
+          <div style="font-size:0.84rem;font-weight:600;color:var(--text)">CTR: 5.4% → 4.8%</div>
+          <div style="font-size:0.74rem;color:var(--muted)">4 keywords lost 3–8 positions</div>
+        </div>
+        <div style="background:var(--success-light);border-radius:var(--radius);padding:0.75rem">
+          <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;color:var(--success);margin-bottom:0.3rem">Quick win</div>
+          <div style="font-size:0.84rem;font-weight:600;color:var(--text)">Fix broken links + metas</div>
+          <div style="font-size:0.74rem;color:var(--muted)">1–2 days effort, immediate impact</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Critical Issues -->
+    <section class="audit-section" aria-labelledby="critical-heading">
+      <h2 id="critical-heading">🔴 Critical Issues <span style="font-size:0.8rem;color:var(--muted);font-weight:400">(4 issues — fix immediately)</span></h2>
+      <p class="section-intro">These issues directly harm rankings, CTR, or user experience and should be resolved within the next sprint.</p>
+      <div id="critical-issues">
+        <!-- Rendered by audit.js -->
+      </div>
+    </section>
+
+    <!-- Warnings -->
+    <section class="audit-section" aria-labelledby="warnings-heading">
+      <h2 id="warnings-heading">🟡 Warnings <span style="font-size:0.8rem;color:var(--muted);font-weight:400">(8 issues — fix within 30 days)</span></h2>
+      <p class="section-intro">These issues reduce organic efficiency or create ranking risk if left unaddressed. Schedule into the next 30-day roadmap.</p>
+      <div id="warning-issues">
+        <!-- Rendered by audit.js -->
+      </div>
+    </section>
+
+    <!-- Notices -->
+    <section class="audit-section" aria-labelledby="notices-heading">
+      <h2 id="notices-heading">🔵 Notices <span style="font-size:0.8rem;color:var(--muted);font-weight:400">(5 items — low-effort improvements)</span></h2>
+      <p class="section-intro">Minor improvements that are low effort and good SEO hygiene. Address during regular content reviews.</p>
+      <div id="notice-issues">
+        <!-- Rendered by audit.js -->
+      </div>
+    </section>
+
+    <!-- Content Opportunities -->
+    <section class="audit-section" aria-labelledby="opportunities-heading">
+      <h2 id="opportunities-heading">🚀 Content Opportunities</h2>
+      <p class="section-intro">High-volume keywords where UrbanNest has no ranking page or a very weak one. Each represents an actionable content creation or optimization task.</p>
+      <div id="opportunities-list">
+        <!-- Rendered by audit.js -->
+      </div>
+    </section>
+
+    <!-- Mobile Analysis -->
+    <section class="audit-section" aria-labelledby="mobile-heading">
+      <h2 id="mobile-heading">📱 Mobile Usability Analysis</h2>
+      <p class="section-intro">39% of UrbanNest sessions are on mobile. Mobile issues directly affect conversions and Google's mobile-first indexing.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+        <div>
+          <h3 style="font-size:0.85rem;font-weight:700;margin-bottom:0.5rem;color:var(--danger)">Failing metrics</h3>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:0.4rem;font-size:0.8rem">
+            <li class="issue-item critical">🔴 LCP: 5.8s (poor — target &lt;2.5s)</li>
+            <li class="issue-item critical">🔴 CLS: 0.14 (poor — target &lt;0.10)</li>
+            <li class="issue-item critical">🔴 TBT: 580ms (poor — target &lt;200ms)</li>
+            <li class="issue-item warning">🟡 FCP: 3.4s (needs improvement)</li>
+            <li class="issue-item warning">🟡 TTFB: 820ms (needs improvement)</li>
+            <li class="issue-item warning">🟡 Tap targets too small on 4 pages</li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="font-size:0.85rem;font-weight:700;margin-bottom:0.5rem;color:var(--success)">Mobile UX strengths</h3>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:0.4rem;font-size:0.8rem">
+            <li style="padding:0.4rem 0;border-bottom:1px solid var(--border)">✅ Responsive layout (all pages)</li>
+            <li style="padding:0.4rem 0;border-bottom:1px solid var(--border)">✅ No intrusive interstitials</li>
+            <li style="padding:0.4rem 0;border-bottom:1px solid var(--border)">✅ Viewport meta tag present</li>
+            <li style="padding:0.4rem 0;border-bottom:1px solid var(--border)">✅ Text readable without zoom</li>
+            <li style="padding:0.4rem 0">✅ No horizontal scrolling</li>
+          </ul>
+        </div>
+      </div>
+      <div style="margin-top:1rem;padding:0.85rem;background:var(--warning-light);border-radius:var(--radius);font-size:0.8rem">
+        <strong style="color:var(--warning)">Impact note:</strong>
+        Google uses mobile-first indexing. A mobile performance score of 51/100 suppresses organic visibility for mobile searchers.
+        Fixing LCP and CLS alone is estimated to improve mobile rankings for 8–12 competitive keywords within 60–90 days.
+      </div>
+    </section>
+
+    <!-- Priority Action Plan -->
+    <section class="audit-section" aria-labelledby="priority-heading">
+      <h2 id="priority-heading">✅ Priority Action Plan</h2>
+      <p class="section-intro">Top 10 actions ordered by ROI — a combination of effort required and expected organic impact. Use this as your sprint planning reference.</p>
+      <div style="overflow-x:auto">
+        <table class="priority-matrix">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Action</th>
+              <th>Category</th>
+              <th>Effort</th>
+              <th>Impact</th>
+              <th>Timeframe</th>
+            </tr>
+          </thead>
+          <tbody id="priority-matrix-body">
+            <!-- Rendered by audit.js -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Appendix -->
+    <section class="audit-section" aria-labelledby="appendix-heading">
+      <h2 id="appendix-heading">📎 Appendix — Audit Methodology</h2>
+      <p class="section-intro">This audit was conducted using the following data sources and simulated tool outputs. For a live site, replace with real data exports.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:0.75rem;margin-top:0.5rem">
+        <div style="background:var(--bg);border-radius:var(--radius);padding:0.85rem;border:1px solid var(--border)">
+          <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;color:var(--muted);margin-bottom:0.3rem">Traffic data</div>
+          <div style="font-size:0.82rem;color:var(--text)">Google Analytics 4 — simulated 13-week export (Oct 7 – Dec 30, 2025)</div>
+        </div>
+        <div style="background:var(--bg);border-radius:var(--radius);padding:0.85rem;border:1px solid var(--border)">
+          <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;color:var(--muted);margin-bottom:0.3rem">Keyword data</div>
+          <div style="font-size:0.82rem;color:var(--text)">Google Search Console — Performance Report, 90-day window</div>
+        </div>
+        <div style="background:var(--bg);border-radius:var(--radius);padding:0.85rem;border:1px solid var(--border)">
+          <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;color:var(--muted);margin-bottom:0.3rem">Technical crawl</div>
+          <div style="font-size:0.82rem;color:var(--text)">Screaming Frog SEO Spider (simulated) — full site crawl</div>
+        </div>
+        <div style="background:var(--bg);border-radius:var(--radius);padding:0.85rem;border:1px solid var(--border)">
+          <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;color:var(--muted);margin-bottom:0.3rem">Page speed</div>
+          <div style="font-size:0.82rem;color:var(--text)">Google PageSpeed Insights / CrUX field data (Dec 2025)</div>
+        </div>
+        <div style="background:var(--bg);border-radius:var(--radius);padding:0.85rem;border:1px solid var(--border)">
+          <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;color:var(--muted);margin-bottom:0.3rem">Schema validation</div>
+          <div style="font-size:0.82rem;color:var(--text)">Google Rich Results Test — checked 10 page templates</div>
+        </div>
+        <div style="background:var(--bg);border-radius:var(--radius);padding:0.85rem;border:1px solid var(--border)">
+          <div style="font-size:0.72rem;font-weight:700;text-transform:uppercase;color:var(--muted);margin-bottom:0.3rem">Keyword research</div>
+          <div style="font-size:0.82rem;color:var(--text)">Ahrefs / Google Keyword Planner — opportunity identification</div>
+        </div>
+      </div>
+      <p style="margin-top:1rem;font-size:0.78rem;color:var(--muted)">
+        <strong>Note:</strong> This is a portfolio demonstration using realistic mock data. In a live engagement, all data would be sourced from verified tool exports and validated with the client's GA4/GSC properties.
+      </p>
+    </section>
+
+    <div style="text-align:center;padding:1.5rem 0;font-size:0.78rem;color:var(--muted)">
+      UrbanNest SEO Audit · Generated December 31, 2025 · Confidential — Internal Use Only
+    </div>
+
+  </div><!-- /.audit-body -->
+
+  <!-- Data files -->
+  <script src="data/traffic-data.js"></script>
+  <script src="data/keywords-data.js"></script>
+  <script src="data/pages-data.js"></script>
+  <script src="data/issues-data.js"></script>
+
+  <!-- Audit logic -->
+  <script src="assets/js/audit.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SEO Analytics Dashboard — UrbanNest</title>
+  <meta name="description" content="SEO performance dashboard for UrbanNest e-commerce brand. Tracks organic traffic, keyword rankings, Core Web Vitals, and technical issues." />
+  <meta name="robots" content="noindex" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <!-- Skip link -->
+  <a class="visually-hidden focusable" href="#main-content" style="position:absolute;top:-40px;left:0;background:var(--primary);color:#fff;padding:.5rem 1rem;z-index:9999;border-radius:0 0 4px 0;transition:top .2s" onfocus="this.style.top='0'" onblur="this.style.top='-40px'">Skip to main content</a>
+
+  <div class="app-layout">
+
+    <!-- ── Sidebar ─────────────────────────────────────── -->
+    <aside class="sidebar" aria-label="Dashboard navigation">
+      <div class="sidebar-logo">
+        <div class="logo-brand">
+          <div class="logo-icon" aria-hidden="true">🏠</div>
+          <div class="logo-text">
+            <span class="logo-name">UrbanNest</span>
+            <span class="logo-sub">SEO Dashboard</span>
+          </div>
+        </div>
+      </div>
+
+      <nav>
+        <ul class="sidebar-nav" role="list">
+          <li class="nav-section-label">Overview</li>
+          <li>
+            <a href="#overview" class="active">
+              <span class="nav-icon" aria-hidden="true">📊</span>
+              Dashboard
+            </a>
+          </li>
+          <li>
+            <a href="#keywords-section">
+              <span class="nav-icon" aria-hidden="true">🔑</span>
+              Keyword Rankings
+            </a>
+          </li>
+          <li>
+            <a href="#pages-section">
+              <span class="nav-icon" aria-hidden="true">📄</span>
+              Landing Pages
+            </a>
+          </li>
+
+          <li class="nav-section-label">Diagnostics</li>
+          <li>
+            <a href="#issues-section">
+              <span class="nav-icon" aria-hidden="true">🔍</span>
+              Technical SEO
+            </a>
+          </li>
+          <li>
+            <a href="#speed-section">
+              <span class="nav-icon" aria-hidden="true">⚡</span>
+              Page Speed
+            </a>
+          </li>
+          <li>
+            <a href="#recommendations">
+              <span class="nav-icon" aria-hidden="true">💡</span>
+              Recommendations
+            </a>
+          </li>
+
+          <li class="nav-section-label">Reports</li>
+          <li>
+            <a href="audit.html">
+              <span class="nav-icon" aria-hidden="true">📋</span>
+              Full Audit Report
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="health-badge" title="Overall SEO health score out of 100">
+          <span class="health-score">62</span>
+          <div class="health-label">SEO Health<br />Score</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ── Main area ───────────────────────────────────── -->
+    <div class="main-area">
+
+      <!-- Topbar -->
+      <header class="topbar" role="banner">
+        <div class="topbar-left">
+          <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle navigation">☰</button>
+          <h1 class="page-title">SEO Performance Dashboard</h1>
+          <span class="brand-tag">UrbanNest</span>
+        </div>
+        <div class="topbar-right">
+          <span class="last-updated">Data through Dec 30, 2025</span>
+          <div class="date-filter" role="group" aria-label="Date range filter">
+            <button class="filter-btn" data-range="last7">7 Days</button>
+            <button class="filter-btn" data-range="last28">28 Days</button>
+            <button class="filter-btn active" data-range="last90">90 Days</button>
+          </div>
+          <button class="export-btn" id="exportBtn" aria-label="Export report as PDF">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Export PDF
+          </button>
+        </div>
+      </header>
+
+      <!-- Content -->
+      <main class="content" id="main-content">
+
+        <!-- ── KPI overview ─────────────────────────────── -->
+        <section id="overview" aria-label="Key performance indicators">
+          <div class="section-header">
+            <h2>Overview</h2>
+            <span class="section-meta">Organic channel · Oct 7 – Dec 30, 2025</span>
+          </div>
+          <div class="kpi-grid" id="kpi-grid" aria-live="polite">
+            <!-- Rendered by dashboard.js -->
+          </div>
+        </section>
+
+        <!-- ── Charts ──────────────────────────────────── -->
+        <div class="chart-row" aria-label="Traffic charts">
+
+          <!-- Traffic trend -->
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <h2>Weekly Traffic Trend</h2>
+              <span style="font-size:0.73rem;color:var(--muted)">Sessions &amp; Users</span>
+            </div>
+            <div class="chart-wrapper" style="height:240px">
+              <canvas id="trafficChart" aria-label="Weekly traffic trend line chart" role="img"></canvas>
+            </div>
+          </div>
+
+          <!-- Device breakdown -->
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <h2>Device Breakdown</h2>
+            </div>
+            <div class="chart-wrapper" style="height:240px">
+              <canvas id="deviceChart" aria-label="Device breakdown doughnut chart" role="img"></canvas>
+            </div>
+          </div>
+
+          <!-- Traffic sources -->
+          <div class="chart-card">
+            <div class="chart-card-header">
+              <h2>Traffic Sources</h2>
+            </div>
+            <div class="chart-wrapper" style="height:240px">
+              <canvas id="sourceChart" aria-label="Traffic sources horizontal bar chart" role="img"></canvas>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ── Keyword Rankings ─────────────────────────── -->
+        <section id="keywords-section" class="table-section" aria-label="Keyword rankings table">
+          <div class="section-header">
+            <h2>Organic Keyword Rankings</h2>
+            <span class="section-meta">15 tracked keywords · Click column header to sort</span>
+          </div>
+          <div class="table-scroll">
+            <table>
+              <thead id="keywords-thead">
+                <tr>
+                  <th data-col="keyword">Keyword</th>
+                  <th data-col="position" class="sort-asc">Position</th>
+                  <th data-col="impressions">Impressions</th>
+                  <th data-col="clicks">Clicks</th>
+                  <th data-col="ctr">CTR</th>
+                  <th>Page</th>
+                </tr>
+              </thead>
+              <tbody id="keywords-table-body">
+                <!-- Rendered by dashboard.js -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ── Top Landing Pages ───────────────────────── -->
+        <section id="pages-section" class="table-section" aria-label="Top landing pages table">
+          <div class="section-header">
+            <h2>Top Landing Pages</h2>
+            <span class="section-meta">10 pages · Organic + all traffic</span>
+          </div>
+          <div class="table-scroll">
+            <table>
+              <thead id="pages-thead">
+                <tr>
+                  <th data-col="url">Page</th>
+                  <th data-col="sessions" class="sort-desc">Sessions</th>
+                  <th data-col="bounceRate">Bounce Rate</th>
+                  <th data-col="conversionRate">Conv. Rate</th>
+                  <th data-col="impressions">Impressions</th>
+                  <th data-col="clicks">Clicks</th>
+                  <th data-col="avgPosition">Avg. Position</th>
+                </tr>
+              </thead>
+              <tbody id="pages-table-body">
+                <!-- Rendered by dashboard.js -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ── Issues + Speed panels ───────────────────── -->
+        <div class="panels-row">
+
+          <!-- Technical SEO Issues -->
+          <div class="panel" id="issues-section">
+            <h2>🔍 Technical SEO Issues</h2>
+            <div id="issues-panel-content">
+              <!-- Rendered by dashboard.js -->
+            </div>
+          </div>
+
+          <!-- Page Speed / Core Web Vitals -->
+          <div class="panel" id="speed-section">
+            <h2>⚡ Page Speed &amp; Core Web Vitals</h2>
+            <div id="speed-panel-content">
+              <!-- Rendered by dashboard.js -->
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ── Recommendations ─────────────────────────── -->
+        <section id="recommendations" class="recommendations-section" aria-label="Optimization recommendations">
+          <div class="section-header">
+            <h2>💡 Optimization Recommendations</h2>
+            <span class="section-meta">Data-driven · Prioritized by impact</span>
+          </div>
+          <div id="recommendations-list">
+            <!-- Rendered by dashboard.js -->
+          </div>
+        </section>
+
+        <!-- ── Audit CTA banner ─────────────────────────── -->
+        <div class="audit-banner" role="complementary" aria-label="Full audit report link">
+          <div class="audit-banner-text">
+            <h3>Full SEO Audit Report Available</h3>
+            <p>17 issues documented with detailed fix instructions, content opportunities, and a 10-point priority action plan.</p>
+          </div>
+          <a href="audit.html" class="btn-audit">
+            View Audit Report →
+          </a>
+        </div>
+
+      </main>
+    </div><!-- /.main-area -->
+  </div><!-- /.app-layout -->
+
+  <!-- Data files (no server required) -->
+  <script src="data/traffic-data.js"></script>
+  <script src="data/keywords-data.js"></script>
+  <script src="data/pages-data.js"></script>
+  <script src="data/issues-data.js"></script>
+
+  <!-- Chart.js v4 CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+
+  <!-- Dashboard logic -->
+  <script src="assets/js/dashboard.js"></script>
+
+</body>
+</html>
