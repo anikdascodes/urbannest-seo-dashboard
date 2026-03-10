@@ -105,9 +105,9 @@
         <div class="topbar-right">
           <span class="last-updated">Data through Dec 30, 2025</span>
           <div class="date-filter" role="group" aria-label="Date range filter">
-            <button class="filter-btn" data-range="last7">7 Days</button>
-            <button class="filter-btn" data-range="last28">28 Days</button>
-            <button class="filter-btn active" data-range="last90">90 Days</button>
+            <button class="filter-btn" data-range="last7" aria-pressed="false">7 Days</button>
+            <button class="filter-btn" data-range="last28" aria-pressed="false">28 Days</button>
+            <button class="filter-btn active" data-range="last90" aria-pressed="true">90 Days</button>
           </div>
           <button class="export-btn" id="exportBtn" aria-label="Export report as PDF">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
@@ -131,7 +131,7 @@
         </section>
 
         <!-- ── Charts ──────────────────────────────────── -->
-        <div class="chart-row" aria-label="Traffic charts">
+        <section class="chart-row" aria-label="Traffic charts">
 
           <!-- Traffic trend -->
           <div class="chart-card">
@@ -164,7 +164,7 @@
             </div>
           </div>
 
-        </div>
+        </section>
 
         <!-- ── Keyword Rankings ─────────────────────────── -->
         <section id="keywords-section" class="table-section" aria-label="Keyword rankings table">

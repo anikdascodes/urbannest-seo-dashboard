@@ -27,6 +27,18 @@
     setupDateFilter();
     setupExportBtn();
     setupSidebarToggle();
+    setupTableSort(
+      "keywords-thead",
+      renderKeywordsTable,
+      () => ({ col: kwSortCol, dir: kwSortDir }),
+      (c, d) => { kwSortCol = c; kwSortDir = d; }
+    );
+    setupTableSort(
+      "pages-thead",
+      renderPagesTable,
+      () => ({ col: pgSortCol, dir: pgSortDir }),
+      (c, d) => { pgSortCol = c; pgSortDir = d; }
+    );
   });
 
   /* ── Utilities ──────────────────────────────────────────── */
@@ -45,13 +57,18 @@
   }
 
   function changeHTML(current, previous, lowerIsBetter, unit) {
+    if (unit) {
+      const absDiff = parseFloat((current - previous).toFixed(1));
+      const positive = lowerIsBetter ? absDiff < 0 : absDiff > 0;
+      const cls = absDiff === 0 ? "neutral" : (positive ? "positive" : "negative");
+      const arrow = absDiff > 0 ? "↑" : absDiff < 0 ? "↓" : "→";
+      return `<span class="kpi-change ${cls}">${arrow} ${Math.abs(absDiff)}${unit} vs prev</span>`;
+    }
     const diff = parseFloat(pct(current, previous));
     const positive = lowerIsBetter ? diff < 0 : diff > 0;
     const cls = diff === 0 ? "neutral" : (positive ? "positive" : "negative");
     const arrow = diff > 0 ? "↑" : diff < 0 ? "↓" : "→";
-    const abs = Math.abs(diff);
-    const label = unit ? `${abs}${unit}` : `${abs}%`;
-    return `<span class="kpi-change ${cls}">${arrow} ${label} vs prev</span>`;
+    return `<span class="kpi-change ${cls}">${arrow} ${Math.abs(diff)}% vs prev</span>`;
   }
 
   function statusClass(s) {
@@ -155,7 +172,7 @@
       },
       options: {
         responsive: true,
-        maintainAspectRatio: true,
+        maintainAspectRatio: false,
         interaction: { mode: "index", intersect: false },
         plugins: {
           legend: {
@@ -203,7 +220,7 @@
       },
       options: {
         responsive: true,
-        maintainAspectRatio: true,
+        maintainAspectRatio: false,
         plugins: {
           legend: { position: "bottom", labels: { boxWidth: 12, font: { size: 11 } } },
           tooltip: {
@@ -240,7 +257,7 @@
       options: {
         indexAxis: "y",
         responsive: true,
-        maintainAspectRatio: true,
+        maintainAspectRatio: false,
         plugins: {
           legend: { display: false },
           tooltip: {
@@ -489,8 +506,12 @@
     document.querySelectorAll(".filter-btn").forEach((btn) => {
       btn.addEventListener("click", function () {
         activeRange = this.dataset.range;
-        document.querySelectorAll(".filter-btn").forEach((b) => b.classList.remove("active"));
+        document.querySelectorAll(".filter-btn").forEach((b) => {
+          b.classList.remove("active");
+          b.setAttribute("aria-pressed", "false");
+        });
         this.classList.add("active");
+        this.setAttribute("aria-pressed", "true");
         renderKPICards(activeRange);
         initTrafficChart(activeRange);
       });
@@ -520,20 +541,4 @@
     });
   }
 
-  /* ── Wire up table sort after DOM is ready ──────────────── */
-  document.addEventListener("DOMContentLoaded", function () {
-    setupTableSort(
-      "keywords-thead",
-      renderKeywordsTable,
-      () => ({ col: kwSortCol, dir: kwSortDir }),
-      (c, d) => { kwSortCol = c; kwSortDir = d; }
-    );
-
-    setupTableSort(
-      "pages-thead",
-      renderPagesTable,
-      () => ({ col: pgSortCol, dir: pgSortDir }),
-      (c, d) => { pgSortCol = c; pgSortDir = d; }
-    );
-  });
 })();

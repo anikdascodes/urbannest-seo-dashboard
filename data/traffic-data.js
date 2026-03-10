@@ -43,7 +43,7 @@ window.UN.traffic = {
 
   /* Which weeks to show per filter (index into weekly array) */
   ranges: {
-    last7:  { start: 12, end: 13 },
+    last7:  { start: 11, end: 13 },
     last28: { start: 9,  end: 13 },
     last90: { start: 0,  end: 13 }
   }
