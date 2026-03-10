@@ -27,6 +27,7 @@
     setupDateFilter();
     setupExportBtn();
     setupSidebarToggle();
+    setupSidebarNav();
     setupTableSort(
       "keywords-thead",
       renderKeywordsTable,
@@ -539,6 +540,65 @@
         sidebar.classList.remove("open");
       }
     });
+  }
+
+  /* ── Sidebar active section state ─────────────────────────── */
+  function setupSidebarNav() {
+    const links = Array.from(document.querySelectorAll('.sidebar-nav a[href^="#"]'));
+    if (!links.length) return;
+
+    const sections = links
+      .map((link) => {
+        const target = document.querySelector(link.getAttribute("href"));
+        return target ? { link, target } : null;
+      })
+      .filter(Boolean);
+
+    if (!sections.length) return;
+
+    function setActive(hash) {
+      links.forEach((link) => {
+        const active = link.getAttribute("href") === hash;
+        link.classList.toggle("active", active);
+        if (active) {
+          link.setAttribute("aria-current", "location");
+        } else {
+          link.removeAttribute("aria-current");
+        }
+      });
+    }
+
+    function updateActiveFromScroll() {
+      const offset = window.scrollY + 140;
+      let activeHash = "#" + sections[0].target.id;
+
+      sections.forEach(({ target }) => {
+        if (target.offsetTop <= offset) {
+          activeHash = "#" + target.id;
+        }
+      });
+
+      setActive(activeHash);
+    }
+
+    links.forEach((link) => {
+      link.addEventListener("click", function () {
+        setActive(this.getAttribute("href"));
+      });
+    });
+
+    window.addEventListener("scroll", updateActiveFromScroll, { passive: true });
+    window.addEventListener("hashchange", function () {
+      if (window.location.hash) {
+        setActive(window.location.hash);
+      }
+    });
+
+    if (window.location.hash) {
+      setActive(window.location.hash);
+    } else {
+      updateActiveFromScroll();
+    }
   }
 
 })();
